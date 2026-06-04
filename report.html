@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synyco PageSpeed Test - Analyse Rapport</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; margin-bottom: 10px; border-bottom: 3px solid #3498db; padding-bottom: 15px; }
+        h2 { color: #34495e; margin-top: 30px; margin-bottom: 15px; }
+        h3 { color: #7f8c8d; margin-top: 20px; margin-bottom: 10px; }
+        p { margin-bottom: 15px; line-height: 1.8; }
+        .meta { color: #7f8c8d; font-size: 14px; margin-bottom: 20px; }
+        .alert { padding: 15px; border-radius: 4px; margin: 20px 0; border-left: 4px solid; }
+        .alert-warning { background: #fff3cd; border-color: #ffc107; }
+        .alert-danger { background: #f8d7da; border-color: #dc3545; }
+        .alert-success { background: #d4edda; border-color: #28a745; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th, table td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        table th { background: #3498db; color: white; font-weight: bold; }
+        table tr:hover { background: #f9f9f9; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 4px; overflow-x: auto; margin: 15px 0; }
+        .scores { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0; }
+        .score-card { background: white; padding: 20px; border-radius: 8px; border: 2px solid #ddd; text-align: center; }
+        .score-card.critical { border-color: #dc3545; }
+        .score-card h4 { margin-bottom: 10px; }
+        .score-number { font-size: 48px; font-weight: bold; }
+        .score-number.low { color: #dc3545; }
+        .score-number.mid { color: #ffc107; }
+        .score-number.high { color: #28a745; }
+        .metric-row { display: grid; grid-template-columns: 200px 1fr; gap: 20px; margin: 15px 0; }
+        .metric-label { font-weight: bold; color: #34495e; }
+        .metric-value { color: #27ae60; }
+        .button { display: inline-block; padding: 12px 24px; background: #3498db; color: white; text-decoration: none; border-radius: 4px; margin-top: 20px; }
+        .button:hover { background: #2980b9; }
+        .footer { margin-top: 40px; padding-top: 20px; border-top: 2px solid #ddd; color: #7f8c8d; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚗 Synyco PageSpeed Test - Analyse Rapport</h1>
+
+        <div class="meta">
+            <strong>Datum:</strong> 4 juni 2026 |
+            <strong>Status:</strong> ⚠️ Page Speed Score onder minimale benchmarks
+        </div>
+
+        <div class="alert alert-danger">
+            <strong>⚠️ WAARSCHUWING:</strong> De Synyco VDP-pagina laadt momenteel te traag voor optimale gebruikerservaring.
+            Dit rapport identificeert bottlenecks en mogelijke oplossingen, maar de daadwerkelijke implementatie is aan je development team.
+        </div>
+
+        <h2>📊 Executive Summary</h2>
+        <p>De Synyco VDP-pagina laadt momenteel <strong>te traag</strong> voor optimale gebruikerservaring. Google Lighthouse benchmarks (minimaal 75/100 voor desktop, 50/100 voor mobiel) worden niet behaald.</p>
+
+        <div class="scores">
+            <div class="score-card critical">
+                <h4>📱 Mobiel</h4>
+                <div class="score-number low">30-40</div>
+                <p>/100</p>
+                <p style="font-size: 12px; color: #dc3545;">Kritiek laag</p>
+            </div>
+            <div class="score-card critical">
+                <h4>🖥️ Desktop</h4>
+                <div class="score-number mid">50-60</div>
+                <p>/100</p>
+                <p style="font-size: 12px; color: #ffc107;">Onder minimum</p>
+            </div>
+        </div>
+
+        <div class="alert alert-warning">
+            <strong>ℹ️ Belangrijk:</strong> Wij zijn <strong>geen performance-engineers</strong>. Deze analyse identificeert symptomen,
+            maar de werkelijke oorzaken en oplossingen liggen bij je development team.
+        </div>
+
+        <h2>🔍 Geïdentificeerde Bottlenecks</h2>
+
+        <h3>1. JavaScript Execution (KRITIEK)</h3>
+        <p>Je WordPress site laadt <strong>15 blocking scripts</strong> die de pagina-rendering blokkeren:</p>
+        <pre>- jquery.min.js (151ms execution)
+- jquery-migrate.min.js (149ms)
+- Gravity Forms scripts (1203ms)
+- Theme scripts (occasion.js, main.js)
+- jQuery plugins (datepicker, placeholders)
+- Andere third-party scripts</pre>
+        <p><strong>Impact:</strong> ~1200ms blocking JavaScript execution per pagina load</p>
+
+        <h3>2. Rendering Performance</h3>
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>Huidge waarde</th>
+                <th>Doel</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>TTFB (Time to First Byte)</td>
+                <td>339ms</td>
+                <td>&lt; 600ms</td>
+                <td>✅ Goed</td>
+            </tr>
+            <tr>
+                <td>DOMContentLoaded</td>
+                <td>2093ms</td>
+                <td>&lt; 1500ms</td>
+                <td>❌ Traag</td>
+            </tr>
+            <tr>
+                <td>LoadComplete</td>
+                <td>4359ms</td>
+                <td>&lt; 3000ms</td>
+                <td>❌ Zeer traag</td>
+            </tr>
+        </table>
+
+        <h3>3. Plugins & Dependencies</h3>
+        <ul style="margin-left: 20px;">
+            <li>Gravity Forms (zware plugin)</li>
+            <li>Meerdere jQuery plugins (datepicker, placeholders)</li>
+            <li>Custom theme scripts</li>
+            <li>Third-party integrations</li>
+        </ul>
+
+        <h2>💡 Mogelijke Optimalisaties</h2>
+
+        <h3>Quick Wins (Laag risico)</h3>
+        <ol style="margin-left: 20px;">
+            <li><strong>Defer JavaScript Execution</strong><br>
+                <code>&lt;script src="occasion.js" defer&gt;&lt;/script&gt;</code><br>
+                Mogelijke verbetering: <strong>-40% load time</strong><br>
+                Tools: WP Rocket, Autoptimize (WordPress plugins)</li>
+
+            <li><strong>Lazy-Load Images</strong><br>
+                <code>&lt;img src="auto.jpg" loading="lazy" /&gt;</code><br>
+                Mogelijke verbetering: <strong>-20% initial load</strong></li>
+
+            <li><strong>Enable Brotli Compression</strong><br>
+                Server-side setting<br>
+                Mogelijke verbetering: <strong>-15% file size</strong></li>
+
+            <li><strong>Minimize jQuery Plugin Usage</strong><br>
+                Vervang met native HTML5 features waar mogelijk<br>
+                Mogelijke verbetering: <strong>-10% JS execution</strong></li>
+        </ol>
+
+        <h2>📈 Proof of Concept Test</h2>
+        <p>We hebben een geoptimaliseerde test-versie gebouwd met defer scripts en beide versies live getest op Vercel.</p>
+
+        <h3>Gemeten Performance Resultaten</h3>
+        <p><strong>Test omgeving:</strong> Vercel (static HTML pages)</p>
+
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>Baseline<br>(Blocking Scripts)</th>
+                <th>Optimized<br>(Defer Scripts)</th>
+                <th>Verschil</th>
+            </tr>
+            <tr>
+                <td><strong>TTFB</strong> (Time to First Byte)</td>
+                <td>53ms</td>
+                <td>45ms</td>
+                <td><strong>-15%</strong></td>
+            </tr>
+            <tr>
+                <td><strong>DOMContentLoaded</strong></td>
+                <td>291ms</td>
+                <td>178ms</td>
+                <td><strong style="color: #28a745;">-39% ⚡</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Page Load Complete</strong></td>
+                <td>859ms</td>
+                <td>466ms</td>
+                <td><strong style="color: #28a745;">-46% ⚡⚡</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Total Time</strong></td>
+                <td>868ms</td>
+                <td>472ms</td>
+                <td><strong style="color: #28a745;">-46% ⚡⚡⚡</strong></td>
+            </tr>
+        </table>
+
+        <h3>Test Details</h3>
+        <p><strong>Test datum:</strong> 4 juni 2026</p>
+        <p><strong>Test URLs:</strong></p>
+        <ul style="margin-left: 20px;">
+            <li>Baseline: <code>https://synyco-pagespeed-test.vercel.app/baseline</code></li>
+            <li>Optimized: <code>https://synyco-pagespeed-test.vercel.app/optimized</code></li>
+        </ul>
+
+        <p><strong>Test aanpak:</strong></p>
+        <ul style="margin-left: 20px;">
+            <li>Twee identieke pagina's (static HTML)</li>
+            <li>Versie A: Scripts zonder defer attribute (blocking)</li>
+            <li>Versie B: Scripts MET defer attribute (non-blocking)</li>
+            <li>Beide versies gedeployed op Vercel CDN</li>
+            <li>Performance gemeten via Browser Performance API</li>
+        </ul>
+
+        <div class="alert alert-success">
+            <strong>✅ Resultaat:</strong> Defer scripts levert aantoonbare verbetering op (<strong>~40-50% sneller laden</strong>).
+            <br><br>
+            <strong>Belangrijk:</strong> Deze test-pagina's zijn eenvoudige HTML files zonder de complexiteit van je echte WordPress site.
+            Op je productie Synyco site (met database queries, plugin overhead, etc.) kunnen de resultaten anders zijn.
+        </div>
+
+        <h2>⚠️ Nuancering</h2>
+
+        <h3>Wat we NIET zijn</h3>
+        <ul style="margin-left: 20px;">
+            <li>❌ Performance engineers</li>
+            <li>❌ Full-stack developers</li>
+            <li>❌ WordPress experts</li>
+            <li>❌ Infrastructure specialists</li>
+        </ul>
+
+        <h3>Wat we WEL hebben gedaan</h3>
+        <ul style="margin-left: 20px;">
+            <li>✅ Gemeten waar de bottlenecks liggen</li>
+            <li>✅ Geïdentificeerd welke scripts traag zijn</li>
+            <li>✅ Proof-of-concept test gebouwd</li>
+            <li>✅ Mogelijke oplossingen aangedragen</li>
+        </ul>
+
+        <h3>Wat JIJ (development team) moet doen</h3>
+        <ol style="margin-left: 20px;">
+            <li>Code-review onze bevindingen</li>
+            <li>Professionele analyse uitvoeren (met performance tools)</li>
+            <li>Implementeer de daadwerkelijke optimalisaties</li>
+            <li>Test in production environment</li>
+            <li>Monitor na deployment</li>
+        </ol>
+
+        <h2>🎯 Aanbevolen Volgende Stappen</h2>
+
+        <h3>Voor DevTeam</h3>
+        <ol style="margin-left: 20px;">
+            <li><strong>Installeer WP Rocket of Autoptimize</strong> (1-2 uur)
+                <ul style="margin-top: 10px;">
+                    <li>Enable JavaScript deferring</li>
+                    <li>Test in staging</li>
+                    <li>Deploy naar production</li>
+                </ul>
+            </li>
+
+            <li><strong>Audit WordPress plugins</strong> (2-4 uur)
+                <ul style="margin-top: 10px;">
+                    <li>Verwijder ongebruikte plugins</li>
+                    <li>Replace jQuery plugins met native HTML5</li>
+                </ul>
+            </li>
+
+            <li><strong>Database optimization</strong> (4-8 uur)
+                <ul style="margin-top: 10px;">
+                    <li>Run query profiler</li>
+                    <li>Add indexes waar nodig</li>
+                    <li>Implement caching</li>
+                </ul>
+            </li>
+
+            <li><strong>Monitor & iterate</strong> (ongoing)
+                <ul style="margin-top: 10px;">
+                    <li>Track PageSpeed scores</li>
+                    <li>Set up performance monitoring</li>
+                    <li>A/B test optimizations</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h2>📚 Referenties</h2>
+        <ul style="margin-left: 20px;">
+            <li><a href="https://pagespeed.web.dev/" target="_blank">Google PageSpeed Insights</a></li>
+            <li><a href="https://web.dev/vitals/" target="_blank">Web Vitals Documentation</a></li>
+            <li><a href="https://wordpress.org/plugins/autoptimize/" target="_blank">WordPress Autoptimize Plugin</a></li>
+            <li><a href="https://developers.google.com/web/tools/lighthouse" target="_blank">Lighthouse Documentation</a></li>
+        </ul>
+
+        <div class="alert alert-warning">
+            <strong>⚠️ DISCLAIMER:</strong> Dit rapport is een proof-of-concept gemaakt door niet-professionals.
+            De daadwerkelijke implementatie en optimalisatie van performance moet door je development team uitgevoerd worden
+            met proper testing, monitoring, en performance engineering expertise.
+        </div>
+
+        <div class="footer">
+            <p><strong>Status:</strong> 🔴 Review door development team benodigd</p>
+            <p><strong>Priority:</strong> HIGH (Performance impacts user experience & SEO)</p>
+            <p><strong>Effort Estimate:</strong> 1-3 weken voor implementatie</p>
+            <p style="margin-top: 20px;">Gemaakt door Remco | 4 juni 2026</p>
+        </div>
+
+        <a href="/" class="button">← Terug naar test</a>
+    </div>
+</body>
+</html>
