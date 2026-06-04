@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lynk & Co 01 - BASELINE (Blocking Scripts)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
+        header { background: white; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .hero { background: white; padding: 40px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .image-placeholder { background: #ddd; height: 200px; border-radius: 4px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; color: #999; }
+        h1 { margin-bottom: 10px; }
+        .meta { color: #666; margin-bottom: 20px; }
+        .badge { display: inline-block; background: #4CAF50; color: white; padding: 5px 10px; border-radius: 4px; margin-top: 10px; font-size: 12px; }
+        footer { background: #333; color: white; padding: 20px; text-align: center; margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🚗 Auto Synyco</h1>
+            <p>Occasion voertuigen - Snelheid Test Baseline</p>
+            <span class="badge">⚠️ BLOCKING SCRIPTS (SLOW)</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Lynk & Co 01 1.5 Plug-in Hybrid 262 Pk</h1>
+            <p class="meta">Zwarte hemel • Panoramadak • 75 km Elektrisch • 360 Camera • Infinity Audio</p>
+            <div class="image-placeholder">🖼️ Auto Afbeelding</div>
+            <p>Dit is een testpagina met <strong>BLOCKING SCRIPTS</strong> - om de impact van script-optimalisatie te demonstreren.</p>
+            <p>Deze scripts laden synchronously en vertraag de pagina.</p>
+        </section>
+
+        <section>
+            <h2>Voertuigdetails</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>💰 Prijs</h3>
+                    <p>€ 28.900,-</p>
+                </div>
+                <div class="card">
+                    <h3>🔧 Specificaties</h3>
+                    <p>262 Pk | 1.5L | Plug-in Hybrid</p>
+                </div>
+                <div class="card">
+                    <h3>📊 Tellerstand</h3>
+                    <p>30.101 km | 2024</p>
+                </div>
+                <div class="card">
+                    <h3>⚙️ Transmissie</h3>
+                    <p>Automaat</p>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top: 40px;">
+            <h2>Gallerij</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="image-placeholder">📸 Foto 1</div>
+                    <p>Voorkant</p>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder">📸 Foto 2</div>
+                    <p>Zijkant</p>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder">📸 Foto 3</div>
+                    <p>Interieur</p>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder">📸 Foto 4</div>
+                    <p>Dashboard</p>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top: 40px; background: white; padding: 30px; border-radius: 8px;">
+            <h2>PageSpeed Insights Test</h2>
+            <p>Deze pagina is geoptimaliseerd met <strong>BLOCKING SCRIPTS</strong> die de rendering blokkeren.</p>
+            <p>Vergelijk deze scores met de "Optimized" versie die defer-scripts gebruikt.</p>
+            <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px;">
+                <strong>⚠️ Performance Impact:</strong><br>
+                Scripts laden synchroon → pagina rendering vertraagd
+            </div>
+        </section>
+    </main>
+
+    <!-- BASELINE: BLOCKING SCRIPTS (NO DEFER) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/nl.min.js"></script>
+    <script>console.log('✅ Baseline version loaded (blocking scripts)');</script>
+
+    <footer>
+        <p>&copy; 2026 Auto Synyco | Test Baseline (Blocking Scripts)</p>
+    </footer>
+</body>
+</html>

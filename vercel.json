@@ -1,0 +1,18 @@
+{
+  "buildCommand": "echo 'Static HTML deployment'",
+  "outputDirectory": ".",
+  "routes": [
+    {
+      "src": "/baseline",
+      "dest": "/vercel-test-baseline.html"
+    },
+    {
+      "src": "/optimized",
+      "dest": "/vercel-test-optimized.html"
+    },
+    {
+      "src": "/",
+      "dest": "/index.html"
+    }
+  ]
+}
