@@ -209,10 +209,19 @@
         </ul>
 
         <div class="alert alert-success">
-            <strong>✅ Resultaat:</strong> Defer scripts levert aantoonbare verbetering op (<strong>~40-50% sneller laden</strong>).
+            <strong>✅ Raw Performance:</strong> Defer scripts levert aantoonbare verbetering op (<strong>~46% sneller laden</strong>).
             <br><br>
-            <strong>Belangrijk:</strong> Deze test-pagina's zijn eenvoudige HTML files zonder de complexiteit van je echte WordPress site.
-            Op je productie Synyco site (met database queries, plugin overhead, etc.) kunnen de resultaten anders zijn.
+            <strong>⚠️ Realistische PageSpeed Score Improvement:</strong><br>
+            - Test-omgeving (static HTML): **+20-30 punten** (waarschijnlijk)
+            - Echte Synyco site (WordPress): **+15-35 punten** (afhankelijk van andere factoren)
+            <br><br>
+            <strong>Waarom niet +40-50 punten?</strong>
+            <ul style="margin-top: 10px; margin-left: 20px;">
+                <li>PageSpeed meet meer dan script execution (LCP, CLS, images, CSS delivery, etc.)</li>
+                <li>Deze test-pagina's zijn eenvoudige HTML zonder WordPress/plugin complexity</li>
+                <li>Op productie site hangen scores af van meerdere factoren (database, caching, images)</li>
+                <li>Defer scripts is slechts ÉÉN optimization; meerdere optimalisaties nodig voor +40-50</li>
+            </ul>
         </div>
 
         <h2>⚠️ Nuancering</h2>
